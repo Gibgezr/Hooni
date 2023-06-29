@@ -6,7 +6,7 @@ Replaces our static's BRD
 
 
 _addon.name = 'Hooni'
-_addon.version = '1.3'
+_addon.version = '1.4'
 _addon.author = 'Gibbles@Bahamut'
 _addon.command = 'hooni'
 
@@ -22,7 +22,7 @@ delayBetweenRounds  = 610
 songs = {"Valor Minuet II", "Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Honor March"}
 stop = true --used to stop repeating
 nitro = true
-doubleMarch = false
+doubleMarch = true
 madrigal = false
 
 function singsong(song)
