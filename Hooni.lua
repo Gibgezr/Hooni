@@ -22,6 +22,8 @@ delayBetweenRounds  = 610
 songs = {"Valor Minuet II", "Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Honor March"}
 stop = true --used to stop repeating
 nitro = true
+doubleMarch = false
+madrigal = false
 
 function singsong(song)
 	if stop == false then
@@ -32,6 +34,29 @@ end
 function JA(jobAbility)
 	if stop == false then
 		windower.chat.input('/ja "'..jobAbility..'" <me>')
+	end
+end
+
+function setupSongList()
+	if madrigal == true then
+		if doubleMarch == true then
+			songs = {"Valor Minuet IV", "Valor Minuet V", "Blade Madrigal", "Victory March", "Honor March"}
+		else
+			songs = {"Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Blade Madrigal", "Honor March"}
+		end
+	else
+		if doubleMarch == true then
+			songs = {"Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Victory March", "Honor March"}
+		else
+			songs = {"Valor Minuet II", "Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Honor March"}
+		end
+	end
+	displaySongList()
+end
+
+function displaySongList()
+	for i, song in ipairs(songs) do
+		log(i..") "..song)
 	end
 end
 
@@ -78,6 +103,8 @@ windower.register_event('addon command', function(...)
 	elseif args[1] == "help" or args[1] == "-help" then
 		log('USAGE: hooni sing/stop')		
 		log('hooni nitro on/off')
+		log('hooni mad on/off -turns on/off singing a madrigal')
+		log('hooni march on/off -turns singing double marches on/off')
 		
 	elseif args[1] == "nitro" then
 		if num == 2 then
@@ -93,9 +120,40 @@ windower.register_event('addon command', function(...)
 			log('nitro is OFF')
 		end	
 		
+	elseif args[1] == "mad" then
+		if num == 2 then
+			if args[2] == "on" or args[2] == "ON" then
+				madrigal = true
+			elseif args[2] == "off" or args[2] == "OFF" then
+				madrigal = false;
+			end
+		end
+		if mad == true then
+			log('madrigal is ON')
+		else
+			log('madrigal is OFF')
+		end	
+		setupSongList()
+	
+	elseif args[1] == "march" then
+		if num == 2 then
+			if args[2] == "on" or args[2] == "ON" then
+				doubleMarch = true
+			elseif args[2] == "off" or args[2] == "OFF" then
+				doubleMarch = false;
+			end
+		end
+		if doubleMarch == true then
+			log('double marches is ON')
+		else
+			log('double marches is OFF')
+		end	
+		setupSongList()
+		
 	elseif args[1] == "go" or args[1] == "start" or args[1] == "sing" then
 		log('HOONI IS SINGING')
 		log('//hooni stop to halt')
+		setupSongList()
 		stop = false
 		go()		
 	end
