@@ -105,6 +105,7 @@ windower.register_event('addon command', function(...)
 		log('hooni nitro on/off')
 		log('hooni mad on/off -turns on/off singing a madrigal')
 		log('hooni march on/off -turns singing double marches on/off')
+		log('hooni list/songs -lists teh current songs to be sung')
 		
 	elseif args[1] == "nitro" then
 		if num == 2 then
@@ -149,6 +150,9 @@ windower.register_event('addon command', function(...)
 			log('double marches is OFF')
 		end	
 		setupSongList()
+		
+	elseif args[1] == "list" or args[1] == "songs" then
+		displaySongList()
 		
 	elseif args[1] == "go" or args[1] == "start" or args[1] == "sing" then
 		log('HOONI IS SINGING')
