@@ -22,8 +22,9 @@ delayBetweenRounds  = 610
 songs = {"Valor Minuet II", "Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Honor March"}
 stop = true --used to stop repeating
 nitro = true
-doubleMarch = true
+doubleMarch = false
 madrigal = false
+sv = true
 
 function singsong(song)
 	if stop == false then
@@ -64,9 +65,10 @@ function go()
 	if stop == false then
 		
 		local delay = 1	
-		
-		JA:schedule(delay, "Soul Voice") --attempt to soul voice
-		delay = delay + 2
+		if sv == true then
+			JA:schedule(delay, "Soul Voice") --attempt to soul voice
+			delay = delay + 2
+		end
 		
 		if nitro then
 			JA:schedule(delay, "Nightingale")
@@ -101,7 +103,8 @@ windower.register_event('addon command', function(...)
 		stop = true
 	
 	elseif args[1] == "help" or args[1] == "-help" then
-		log('USAGE: hooni sing/stop')		
+		log('USAGE: hooni sing/stop')	
+		log('hooni sv on/off')		
 		log('hooni nitro on/off')
 		log('hooni mad on/off -turns on/off singing a madrigal')
 		log('hooni march on/off -turns singing double marches on/off')
@@ -119,6 +122,20 @@ windower.register_event('addon command', function(...)
 			log('nitro is ON')
 		else
 			log('nitro is OFF')
+		end
+		
+	elseif args[1] == "sv" or args[1] == "SV" then
+		if num == 2 then
+			if args[2] == "on" or args[2] == "ON" then
+				sv = true
+			elseif args[2] == "off" or args[2] == "OFF" then
+				sv = false;
+			end
+		end
+		if nitro == sv then
+			log('soul voice is ON')
+		else
+			log('soul voice is OFF')
 		end	
 		
 	elseif args[1] == "mad" then
