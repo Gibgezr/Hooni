@@ -112,9 +112,9 @@ windower.register_event('addon command', function(...)
 		
 	elseif args[1] == "nitro" then
 		if num == 2 then
-			if args[2] == "on" or args[2] == "ON" then
+			if args[2] == "on" then
 				nitro = true
-			elseif args[2] == "off" or args[2] == "OFF" then
+			elseif args[2] == "off" then
 				nitro = false;
 			end
 		end
@@ -124,11 +124,11 @@ windower.register_event('addon command', function(...)
 			log('nitro is OFF')
 		end
 		
-	elseif args[1] == "sv" or args[1] == "SV" then
+	elseif args[1] == "sv" then
 		if num == 2 then
-			if args[2] == "on" or args[2] == "ON" then
+			if args[2] == "on" then
 				sv = true
-			elseif args[2] == "off" or args[2] == "OFF" then
+			elseif args[2] == "off" then
 				sv = false;
 			end
 		end
@@ -140,9 +140,9 @@ windower.register_event('addon command', function(...)
 		
 	elseif args[1] == "mad" then
 		if num == 2 then
-			if args[2] == "on" or args[2] == "ON" then
+			if args[2] == "on" then
 				madrigal = true
-			elseif args[2] == "off" or args[2] == "OFF" then
+			elseif args[2] == "off" then
 				madrigal = false;
 			end
 		end
@@ -155,9 +155,9 @@ windower.register_event('addon command', function(...)
 	
 	elseif args[1] == "march" then
 		if num == 2 then
-			if args[2] == "on" or args[2] == "ON" then
+			if args[2] == "on" then
 				doubleMarch = true
-			elseif args[2] == "off" or args[2] == "OFF" then
+			elseif args[2] == "off" then
 				doubleMarch = false;
 			end
 		end
