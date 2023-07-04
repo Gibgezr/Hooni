@@ -146,7 +146,7 @@ windower.register_event('addon command', function(...)
 				madrigal = false
 			end
 		end
-		if mad == true then
+		if madrigal == true then
 			log('madrigal is ON')
 		else
 			log('madrigal is OFF')
