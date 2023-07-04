@@ -22,8 +22,8 @@ delayBetweenRounds  = 610
 songs = {"Valor Minuet II", "Valor Minuet III", "Valor Minuet IV", "Valor Minuet V", "Honor March"}
 stop = true --used to stop repeating
 nitro = true
-doubleMarch = false
-madrigal = false
+doubleMarch = true
+madrigal = true
 sv = true
 
 function singsong(song)
@@ -115,7 +115,7 @@ windower.register_event('addon command', function(...)
 			if args[2] == "on" then
 				nitro = true
 			elseif args[2] == "off" then
-				nitro = false;
+				nitro = false
 			end
 		end
 		if nitro == true then
@@ -129,10 +129,10 @@ windower.register_event('addon command', function(...)
 			if args[2] == "on" then
 				sv = true
 			elseif args[2] == "off" then
-				sv = false;
+				sv = false
 			end
 		end
-		if nitro == sv then
+		if sv == true then
 			log('soul voice is ON')
 		else
 			log('soul voice is OFF')
@@ -143,7 +143,7 @@ windower.register_event('addon command', function(...)
 			if args[2] == "on" then
 				madrigal = true
 			elseif args[2] == "off" then
-				madrigal = false;
+				madrigal = false
 			end
 		end
 		if mad == true then
@@ -158,7 +158,7 @@ windower.register_event('addon command', function(...)
 			if args[2] == "on" then
 				doubleMarch = true
 			elseif args[2] == "off" then
-				doubleMarch = false;
+				doubleMarch = false
 			end
 		end
 		if doubleMarch == true then
@@ -169,7 +169,7 @@ windower.register_event('addon command', function(...)
 		setupSongList()
 		
 	elseif args[1] == "list" or args[1] == "songs" then
-		displaySongList()
+		setupSongList()		
 		
 	elseif args[1] == "go" or args[1] == "start" or args[1] == "sing" then
 		log('HOONI IS SINGING')
